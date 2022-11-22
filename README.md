@@ -2,7 +2,7 @@
 Welcome to **CALCREWLATOR**. This is a web-app designed to keep track of all rowing metrics, whether it be keeping track of practices and workouts, storing force and length data, or logging race results. The Calcrewlator will be able to perform analyses on top of all of these stored metrics and make it easier for coaches and staff to design practices and create lineups.
 
 ## DATABASE
-The database for **Calcrewlator** uses **PostreSQL**.
+The database for **Calcrewlator** uses **PostgreSQL**.
 
 ## BACKEND
 The backend for **Calcrewlator** is built in **Java** using **Spring Boot**.
