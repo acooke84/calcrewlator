@@ -12,6 +12,8 @@ The backend for **Calcrewlator** is built in **Java** using **Spring Boot**.
 
 The frontend for **Calcrewlator** is built with **React** on top of **JavaScript**.
 
+## MIDDLEWARE
+
 ### Connecting to the database
 The middleware which connects the backend to the database uses **JPA**. 
 
