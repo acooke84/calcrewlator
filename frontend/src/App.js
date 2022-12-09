@@ -11,6 +11,7 @@ class App extends Component {
     const response = await fetch('/athletes');
     const body = await response.json();
     this.setState({athletes:body});
+    console.log(body);
   }
 
   render() {

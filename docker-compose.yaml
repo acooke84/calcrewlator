@@ -1,0 +1,41 @@
+version: '1.0'
+
+services:
+  calcrewlator:
+    restart: always
+    image: 'calcrewlator.jar'
+    container_name: calcrewlator
+    expose:
+      - 8080
+    ports:
+      - 8080:8080
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5455/calcrewlator
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=admin
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  db:
+    restart: always
+    image: postgres:latest
+    container_name: db
+    expose:
+      - 5455
+    ports:
+      - 127.0.0.1:5455:5455
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=calcrewlator
+    volumes:
+      - postgres-data:/Library/PostgreSQL/15/data
+    #healthcheck:
+    #  test: ["CMD-SHELL", "pg_isready -U postgres"]
+    #  interval: 10s
+    #  timeout: 5s
+    #  retries: 5
+    command: -p 5455
+volumes:
+  postgres-data:
