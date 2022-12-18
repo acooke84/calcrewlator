@@ -1,4 +1,4 @@
-package calcrewlator.calcrewlator.service.response;
+package calcrewlator.calcrewlator.service.responses;
 
 import calcrewlator.calcrewlator.persistance.entities.Boat;
 import calcrewlator.calcrewlator.persistance.types.BoatType;

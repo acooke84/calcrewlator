@@ -16,13 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import calcrewlator.calcrewlator.persistance.entities.Athlete;
 import calcrewlator.calcrewlator.service.ports.AthleteService;
-import calcrewlator.calcrewlator.service.response.AthleteWithoutSeatsResponse;
+import calcrewlator.calcrewlator.service.responses.AthleteWithoutSeatsResponse;
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/athletes")
 @RequiredArgsConstructor
-public class AthletesController {
+public class AthleteController {
 
     private final AthleteService athleteService;
 
@@ -67,10 +67,9 @@ public class AthletesController {
     }
 
     @PostMapping
-    public ResponseEntity<Athlete> createAthlete(@RequestBody Athlete athlete) throws URISyntaxException {
+    public ResponseEntity<AthleteWithoutSeatsResponse> createAthlete(@RequestBody Athlete athlete) throws URISyntaxException {
         Athlete savedAthlete = athleteService.saveAthlete(athlete);
-        return ResponseEntity.created(
-            new URI("/athletes/" + savedAthlete.getAthleteId())).body(savedAthlete);
+        return new ResponseEntity<>(AthleteWithoutSeatsResponse.of(savedAthlete), HttpStatus.OK);
     }
 
     private List<AthleteWithoutSeatsResponse> collectAthletesWithoutSeats(List<Athlete> athletes) {

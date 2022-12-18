@@ -8,6 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import calcrewlator.calcrewlator.persistance.types.Seat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,7 +34,7 @@ public class SeatAssignment {
     private Athlete athlete;
 
     @Column(name = "seat_id")
-    private Integer seatId;
+    private Seat seatId;
 
     @Override
     public String toString() {

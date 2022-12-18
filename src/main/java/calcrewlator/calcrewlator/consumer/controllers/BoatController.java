@@ -17,13 +17,13 @@ import org.springframework.web.bind.annotation.RestController;
 import calcrewlator.calcrewlator.persistance.entities.Boat;
 import calcrewlator.calcrewlator.persistance.types.BoatType;
 import calcrewlator.calcrewlator.service.ports.BoatService;
-import calcrewlator.calcrewlator.service.response.BoatResponse;
+import calcrewlator.calcrewlator.service.responses.BoatResponse;
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/boats")
 @RequiredArgsConstructor
-public class BoatsController {
+public class BoatController {
 
     private final BoatService boatService;
     
@@ -52,10 +52,9 @@ public class BoatsController {
     }
 
     @PostMapping
-    public ResponseEntity<Boat> createAthlete(@RequestBody Boat boat) throws URISyntaxException {
+    public ResponseEntity<BoatResponse> createAthlete(@RequestBody Boat boat) throws URISyntaxException {
         Boat savedBoat = boatService.saveBoat(boat);
-        return ResponseEntity.created(
-            new URI("/boats/" + savedBoat.getBoatId())).body(savedBoat);
+        return new ResponseEntity<BoatResponse>(BoatResponse.of(savedBoat), HttpStatus.OK);
     }
 
     private List<BoatResponse> collectBoats(List<Boat> boats) {

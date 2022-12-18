@@ -1,17 +1,14 @@
-package calcrewlator.calcrewlator.service.response;
-
-import java.util.List;
-import java.util.stream.Collectors;
+package calcrewlator.calcrewlator.service.responses;
 
 import calcrewlator.calcrewlator.persistance.entities.Athlete;
 import calcrewlator.calcrewlator.persistance.types.Side;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-@Data
 @AllArgsConstructor
-public class AthleteResponse {
-
+@Data
+public class AthleteWithoutSeatsResponse {
+    
     private Long athleteId;
     private String athleteName;
     private Integer graduationYear;
@@ -19,17 +16,15 @@ public class AthleteResponse {
     private Side primarySide;
     private Boolean swapsSides;
 
-    private List<SeatResponse> seats;
-
-    public static AthleteResponse of(Athlete athlete) {
-        return new AthleteResponse(
+    public static AthleteWithoutSeatsResponse of(Athlete athlete) {
+        return new AthleteWithoutSeatsResponse(
             athlete.getAthleteId(),
             athlete.getAthleteName(), 
             athlete.getGraduationYear(), 
             athlete.getIsRower(), 
             athlete.getPrimarySide(), 
-            athlete.getSwapsSides(),
-            athlete.getSeatAssignments().stream().map(seat -> SeatResponse.of(seat)).collect(Collectors.toList())
+            athlete.getSwapsSides()
         );
     }
+
 }
