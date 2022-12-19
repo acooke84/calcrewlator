@@ -9,12 +9,15 @@ import RadioGroup from '@mui/material/RadioGroup';
 import Radio from '@mui/material/Radio';
 import Switch from '@mui/material/Switch';
 import TextField from '@mui/material/TextField';
+import { createAthlete } from '../../shared/api/athletes';
 
 const AthleteCreator = () => {
   const [name, setName] = React.useState('');
   const [type, setType] = React.useState('ROWER');
   const [side, setSide] = React.useState('STARBOARD');
   const [both, setBoth] = React.useState(false);
+  const [grad, setGrad] = React.useState('');
+  const [submitted, setSubmitted] = React.useState(false);
 
   const handleName = (event) => {
     setName(event.target.value);
@@ -28,6 +31,36 @@ const AthleteCreator = () => {
   const handleBoth = (event) => {
     setBoth(event.target.checked);
   };
+  const handleGrad = (event) => {
+    setGrad(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setSubmitted(true);
+    //check for invalid inputs
+    if (name === '' || grad === '' || isNaN(grad) || grad < 1900 || grad >= 2100) {
+      return;
+    }
+    let athlete;
+    if (type === 'ROWER') {
+      athlete = {
+        athleteName: name,
+        graduationYear: grad,
+        isRower: type === 'ROWER',
+        primarySide: side,
+        canRowBothSides: both,
+      }
+    } else {
+      athlete = {
+        athleteName: name,
+        graduationYear: grad,
+        isRower: type === 'ROWER',
+      }
+    }
+    createAthlete(athlete);
+    window.location.reload(false);
+  }
 
   return (
     <Box
@@ -38,17 +71,27 @@ const AthleteCreator = () => {
       noValidate
       autoComplete="off"
       className='athlete-creator'
+      onSubmit={handleSubmit}
     >
       <TextField
+        error={submitted && (name === '')}
+        helperText={submitted && (name === '') ? 'Invalid name' : ''}
         id="Name"
         label="Name"
         value={name}
         onChange={handleName}
-        className='name-input'
-        sx={{input: {textAlign: "center"}}}
+        sx={{width: '10em'}}
+        />
+      <TextField
+        error={submitted && (grad === '' || isNaN(grad) || grad < 1900 || grad >= 2100)}
+        helperText={submitted && (grad === '' || isNaN(grad) || grad < 1900 || grad >= 2100) ? 'Invalid graduation year' : ''}
+        id="grad"
+        label="Graduation Year"
+        value={grad}
+        onChange={handleGrad}
+        sx={{width: '8em'}}
         />
       <Box className='radio-container'>
-
         <FormControl sx={{paddingRight: '5vw'}}>
           <FormLabel id="type-buttons-group">Athlete Type</FormLabel>
           <RadioGroup
@@ -77,9 +120,8 @@ const AthleteCreator = () => {
       <FormControl>
         <FormControlLabel control={<Switch checked={both} onChange={handleBoth} disabled={type === 'COXSWAIN'}/>} label="Can row both sides?" />
       </FormControl>
-      <Button type="submit" variant="contained" color='primary'>ADD ATHLETE</Button>
+      <Button type="submit" variant="contained">ADD ATHLETE</Button>
     </Box>
-    
   );
 };
 
