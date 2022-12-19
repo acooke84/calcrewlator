@@ -1,6 +1,7 @@
-import logo from './logo.svg';
 import './App.css';
 import React, { Component } from 'react';
+import Box from '@mui/material/Box';
+import AthleteCreator from './components/AthleteCreator/AthleteCreator';
 
 class App extends Component {
   state = {
@@ -18,15 +19,16 @@ class App extends Component {
     const {athletes} = this.state;
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Athletes</h2>
+        <h2>Athletes</h2>
+        <Box sx={{marginBottom: '30px'}}>
           {athletes.map(athlete =>
             <div key={athlete.athleteId}>
               {athlete.athleteName} ({athlete.graduationYear}) 
             </div>
           )}
-        </header>
+        </Box>
+        
+        <AthleteCreator/>
       </div>
     )
   }

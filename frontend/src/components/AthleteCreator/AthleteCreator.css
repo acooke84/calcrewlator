@@ -1,0 +1,18 @@
+.athlete-creator {
+  width: 45vw;
+  min-width: fit-content;
+  background-color: #e8e8e8;
+  padding: 30px;
+}
+
+.radio-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  
+}
+
+.name-input {
+  width: 50%;
+}
