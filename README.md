@@ -22,7 +22,7 @@ We use a client-server architecture to connect the frontend to the backend. The 
 ## BUILDING
 
 ### Command line
-From the command line, *cd* into the project directory. From there, run **mvn spring-boot:run**. In a second terminal window, *cd* into the *calcrewlator/frontend* directory. In that window, run npm start. This command will launch the frontend in your browser where you will be able to interact with **Calcrewlator**. 
+From the command line, *cd* into the project directory. From there, run **mvn spring-boot:run**. In a second terminal window, *cd* into the *calcrewlator/frontend* directory. In that window, run npm install followed by npm start. This command will launch the frontend in your browser where you will be able to interact with **Calcrewlator**. 
 
 To clean up, first hit *Ctrl+C* in the window which is running the frontend. Afterwards, also hit *Ctrl+C* in the window running the backend. This will stop the service.
 
