@@ -9,7 +9,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import Radio from '@mui/material/Radio';
 import Switch from '@mui/material/Switch';
 import TextField from '@mui/material/TextField';
-import { createAthlete } from '../../shared/api/athletes';
+import { createAthlete } from '../../../shared/api/athletes';
 
 const AthleteCreator = () => {
   const [name, setName] = React.useState('');
