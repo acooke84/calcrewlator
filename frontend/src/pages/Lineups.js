@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
+import LineupCreator from '../components/Lineups/LineupCreator/LineupCreator';
 
 const Lineups = () => {
   return (
@@ -8,6 +9,7 @@ const Lineups = () => {
       alignItems: 'center',
       width: '100%'}}>
       <h2>Lineups</h2>
+      <LineupCreator/>
     </Box>
   );
 };

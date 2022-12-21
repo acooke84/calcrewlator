@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
-import AthleteCreator from '../components/AthleteCreator/AthleteCreator';
+import AthleteCreator from '../components/Athletes/AthleteCreator/AthleteCreator';
 import { getAthletes } from '../shared/api/athletes';
+import DisplayAthlete from '../components/Athletes/DisplayAthlete/DisplayAthlete';
 
 const Athletes = () => {
   const [athletes, setAthletes] = useState([]);
@@ -20,14 +21,15 @@ const Athletes = () => {
       alignItems: 'center',
       width: '100%'}}>
       <h2>Athletes</h2>
-      <Box sx={{marginBottom: '30px'}}>
-        {athletes.map(athlete =>
-          <div key={athlete.athleteId}>
-            {athlete.athleteName} ({athlete.graduationYear}) 
-          </div>
-        )}
+      <Box sx={{display: 'flex', width: '100%', justifyContent: 'center'}}>
+        <Box sx={{position: 'absolute', left: '10px'}}>
+          {athletes.map(athlete =>
+            <DisplayAthlete athlete={athlete} key={athlete.athleteId}/>)}
+        </Box>
+        <Box sx={{}}>
+          <AthleteCreator/>
+        </Box>
       </Box>
-      <AthleteCreator/>
     </Box>
   );
 };
