@@ -1,0 +1,30 @@
+#boat-form-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#athlete-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.athlete-button {
+    width: 200px;
+    height: 50px;
+    background-color: #694b3e;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-bottom: 1px solid white;
+    cursor: pointer;
+}
+
+.athlete-button:hover {
+    background-color: white;
+    color: #694b3e;
+    box-shadow: 0 0 10px #694b3e;
+}

@@ -5,6 +5,7 @@ import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
+import BoatForm from '../BoatForm/BoatForm';
 
 const LineupCreator = () => {
   const [boat, setBoat] = useState('');
@@ -12,7 +13,7 @@ const LineupCreator = () => {
 
   return (
     <Box sx={{ minWidth: 130}}>
-      <FormControl fullWidth>
+      <FormControl sx={{width: '120px', marginBottom: '10px'}}>
         <InputLabel id="boat-type-label">Boat Type</InputLabel>
         <Select
           labelId="demo-type-label"
@@ -23,6 +24,7 @@ const LineupCreator = () => {
           {boatTypes.map(boatType => <MenuItem value={boatType} key={boatType}>{boatType}</MenuItem>)}
         </Select>
       </FormControl>
+      <BoatForm boat={boat}/>
     </Box>
   );
 }
