@@ -13,18 +13,22 @@
 .athlete-button {
     width: 200px;
     height: 50px;
-    background-color: #694b3e;
-    color: white;
+    background-color: white;
+    color: #694b3e;
     font-size: 20px;
     font-weight: bold;
     text-transform: uppercase;
-    border: none;
-    border-bottom: 1px solid white;
+    border: 1px solid #694b3e;
     cursor: pointer;
+    margin-bottom: 4px;
 }
 
 .athlete-button:hover {
+    background-color: #fafafa;
+    box-shadow: 0 0 1px #694b3e;
+}
+
+.selected-btn {
     background-color: white;
-    color: #694b3e;
-    box-shadow: 0 0 10px #694b3e;
+    border: 2px solid black;
 }
